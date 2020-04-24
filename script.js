@@ -69,5 +69,27 @@ while (catX < categories.length) {
     }
 }
 
+// Shuffle Algo
+var fresh = [];
 
+for(let x=0; x < categories.length; ++x){
+    fresh.push([]);
+}
 
+function prepDeck(catX){
+    fresh[catX] = [];
+    var deckLength =  categories[catX].deck.length;
+    for(let cardX = 0; cardX < deckLength; ++cardX){
+        fresh[catX][cardX] = cardX;
+    }
+}
+
+function draw(catX){
+    if (fresh[catX].length == 0) {
+        prepDeck(catX);
+    }
+
+    var freshX = Math.floor(Math.random()*fresh[catX].length);
+    var cardX = fresh[catX].splice(freshX, 1)[0];
+    return [cardX, categories[catX].deck[cardX]];
+}
