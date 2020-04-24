@@ -63,7 +63,7 @@ while (catX < categories.length) {
     var deck = categories[catX].deck;
     if (deck.length <= 0) {
         console.log("WARNING 'cards.csv' contains no cards for category '" + categories[catX].name + "'.");
-        categories.pop(catX);
+        categories.splice(catX, 1);
     } else{
         catX += 1;
     }
