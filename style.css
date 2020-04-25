@@ -2,4 +2,63 @@
 
 body {
     background-color: black;
+    width:100%;
+    margin: 0;
+    padding: 0;
 }
+
+.flex {
+    display: flex;
+    width: 100%;
+}
+
+input {
+    border: 0;
+    width:auto;
+}
+
+input.break {
+    word-wrap: break-word;
+    word-break: break-all;
+    height: 80px;
+}
+
+.m0 {
+    margin: 0;
+    border: 0;
+}
+
+.button {
+    flex:1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 20%;
+    height: 4em;
+    background-color: aquamarine;
+}
+
+.question {
+    flex:2;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+    height: 4em;
+    background-color: cadetblue;
+ }
+
+ .answer {
+    flex:3;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 20%;
+    width: 10%;
+    height: 4em;
+    background-color: darkcyan;
+ }
+
+ .reference {
+    flex:4;
+    width: 10%;
+    height: 4em;
+    background-color: darkred;
+ }

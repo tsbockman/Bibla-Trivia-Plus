@@ -68,7 +68,21 @@ torah,When Pharaoh made Joseph the ruler over Egypt what did he place on his han
 torah,What were the names of Joseph's two sons?,Manasseh and Ephriam,Genesis 41:51-52
 torah,What is the most well known gift Jacob gave to Joseph?,A multi-colored robe,Genesis 37:3
 torah,What warning did Joseph find in Pharaoh's dreams?,Seven years of plenty followed by seven years of severe famine,Genesis 41:29-30
+history,history question sample 1,answer sample 1,reference sample 1
+history,history question sample 2,answer sample 2,reference sample 2
 wisdom,It is better to go to the house of _________ than to go to the house of feasting,mourning ,Ecclesiastes 7:2
 wisdom,The ____ of the LORD is the beginning of knowledge.,fear,Proverbs 1:7
 wisdom,Be not ____ in your own eyes; fear the LORD and turn away from evil.,wise,Proverbs 3:7
+history,history question sample 1,answer sample 1,reference sample 1
+history,history question sample 2,answer sample 2,reference sample 2
+prophets,prophets question sample 1,answer sample 1,reference sample 1
+prophets,prophets question sample 2,answer sample 2,reference sample 2
+gospels,gospels question sample 1,answer sample 1,reference sample 1
+gospels,gospels question sample 2,answer sample 2,reference sample 2
+acts,acts question sample 1,answer sample 1,reference sample 1
+acts,acts question sample 2,answer sample 2,reference sample 2
+paul,paul question sample 1,answer sample 1,reference sample 1
+paul,paul question sample 2,answer sample 2,reference sample 2
+epistles,epistles question sample 1,answer sample 1,reference sample 1
+epistles,epistles question sample 2,answer sample 2,reference sample 2
 `;

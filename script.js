@@ -69,13 +69,14 @@ while (catX < categories.length) {
     }
 }
 
-// Shuffle Algo
-var fresh = [];
+// A master container to hold our splicable decks
+var fresh = []; // a master list to hold our lists of decks
 
-for(let x=0; x < categories.length; ++x){
+for(let x=0; x < categories.length; ++x){ // initaites an empty list for every category
     fresh.push([]);
 }
 
+// Prep deck of numbers to be spliced from and insert into master container called fresh
 function prepDeck(catX){
     fresh[catX] = [];
     var deckLength =  categories[catX].deck.length;
@@ -84,12 +85,17 @@ function prepDeck(catX){
     }
 }
 
+// Draw a card from a specific deck - shuffle if the length of the deck is 0
 function draw(catX){
+    // if the deck is empty, we prep it and fill it with data
     if (fresh[catX].length == 0) {
         prepDeck(catX);
     }
 
+    // freshX is just a random number that is selected in comparison to the lenth of the deck
     var freshX = Math.floor(Math.random()*fresh[catX].length);
+    // cardX is the actual card drawn from the deck, a splice is performed to remove that it from the master list
     var cardX = fresh[catX].splice(freshX, 1)[0];
     return [cardX, categories[catX].deck[cardX]];
 }
+
