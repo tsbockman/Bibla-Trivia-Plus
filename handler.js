@@ -19,9 +19,9 @@ torahButton.onclick = function() {
     card = draw(0);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionTorah.value = questionData.toString();
-    answerTorah.value = answerData.toString();
-    referenceTorah.value = referenceData.toString();
+    document.getElementById('questionTorah').innerHTML = questionData.toString();
+    document.getElementById('answerTorah').innerHTML = answerData.toString();
+    document.getElementById('referenceTorah').innerHTML = referenceData.toString();
 };
 
 
@@ -33,9 +33,9 @@ historyButton.onclick = function() {
     card = draw(1);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionHistory.value = questionData.toString();
-    answerHistory.value = answerData.toString();
-    referenceHistory.value = referenceData.toString();
+    document.getElementById('questionHistory').innerHTML = questionData.toString();
+    document.getElementById('answerHistory').innerHTML = answerData.toString();
+    document.getElementById('referenceHistory').innerHTML = referenceData.toString();
 };
 
 // Handle wisdomButton Event
@@ -46,9 +46,9 @@ wisdomButton.onclick = function() {
     card = draw(2);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionWisdom.value = questionData.toString();
-    answerWisdom.value = answerData.toString();
-    referenceWisdom.value = referenceData.toString();
+    document.getElementById('questionWisdom').innerHTML = questionData.toString();
+    document.getElementById('answerWisdom').innerHTML = answerData.toString();
+    document.getElementById('referenceWisdom').innerHTML = referenceData.toString();
 };
 
 // Handle prophetsButton Event
@@ -59,9 +59,9 @@ prophetsButton.onclick = function() {
     card = draw(3);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionProphets.value = questionData.toString();
-    answerProphets.value = answerData.toString();
-    referenceProphets.value = referenceData.toString();
+    document.getElementById('questionProphets').innerHTML = questionData.toString();
+    document.getElementById('answerProphets').innerHTML = answerData.toString();
+    document.getElementById('referenceProphets').innerHTML = referenceData.toString();
 };
 
 // Handle prophetsButton Event
@@ -72,9 +72,9 @@ gospelsButton.onclick = function() {
     card = draw(4);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionGospels.value = questionData.toString();
-    answerGospels.value = answerData.toString();
-    referenceGospels.value = referenceData.toString();
+    document.getElementById('questionGospels').innerHTML = questionData.toString();
+    document.getElementById('answerGospels').innerHTML = answerData.toString();
+    document.getElementById('referenceGospels').innerHTML = referenceData.toString();
 };
 
 // Handle actsButton Event
@@ -85,9 +85,9 @@ actsButton.onclick = function() {
     card = draw(5);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionActs.value = questionData.toString();
-    answerActs.value = answerData.toString();
-    referenceActs.value = referenceData.toString();
+    document.getElementById('questionActs').innerHTML = questionData.toString();
+    document.getElementById('answerActs').innerHTML = answerData.toString();
+    document.getElementById('referenceActs').innerHTML = referenceData.toString();
 };
 
 // Handle paulButton Event
@@ -98,9 +98,9 @@ paulButton.onclick = function() {
     card = draw(6);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionPaul.value = questionData.toString();
-    answerPaul.value = answerData.toString();
-    referencePaul.value = referenceData.toString();
+    document.getElementById('questionPaul').innerHTML = questionData.toString();
+    document.getElementById('answerPaul').innerHTML = answerData.toString();
+    document.getElementById('referencePaul').innerHTML = referenceData.toString();
 };
 
 // Handle epistlesButton Event
@@ -111,7 +111,7 @@ epistlesButton.onclick = function() {
     card = draw(7);
     setCard(card);
     // Update the HTML elements with the result of the function
-    questionEpistles.value = questionData.toString();
-    answerEpistles.value = answerData.toString();
-    referenceEpistles.value = referenceData.toString();
+    document.getElementById('questionEpistles').innerHTML = questionData.toString();
+    document.getElementById('answerEpistles').innerHTML = answerData.toString();
+    document.getElementById('referenceEpistles').innerHTML = referenceData.toString();
 };

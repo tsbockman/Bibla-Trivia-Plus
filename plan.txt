@@ -1,7 +1,5 @@
 TODO:
 
-DONE - Card Deck Data Structure
-Shuffling Algo
 Q&A UI
 -----caught up-----
 Grading System (Multi Choice?)
