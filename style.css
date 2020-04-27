@@ -5,6 +5,7 @@ body {
     width:100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .flex {
@@ -36,7 +37,7 @@ input.break {
     height: 4em;
     padding: 1em;
     color:white;
-    background-color: rgb(68, 68, 68);
+    background-color: rgb(44, 44, 44);
     list-style: none;
     text-align: center;
     user-select: none; 
@@ -46,12 +47,12 @@ input.break {
 }
 
 .button:hover {
-    color:black;
-    background-color: white;
+    color:rgb(255, 255, 255);
+    background-color: rgb(27, 27, 27);
 }
 .button:active {
-    color:rgb(0, 0, 0);
-    background-color: rgb(230, 230, 230);
+    color:rgb(255, 255, 255);
+    background-color: rgb(5, 14, 26);
 }
 
 .question {
@@ -61,7 +62,8 @@ input.break {
     flex-basis: 40%;
     height: 4em;
     padding: 1em;
-    background-color: rgb(98, 255, 182);
+    color: rgb(98, 255, 182);
+    background-color: black;
     justify-content: left;
     align-items: center;
     display: flex
@@ -75,7 +77,8 @@ input.break {
     width: 10%;
     height: 4em;
     padding: 1em;
-    background-color: rgb(0, 183, 255);
+    color: rgb(56, 199, 255);
+    background-color: rgb(0, 7, 19);
     justify-content: center;
     align-items: center;
     display: flex
@@ -86,7 +89,8 @@ input.break {
     width: 10%;
     height: 4em;
     padding: 1em;
-    background-color: rgb(224, 221, 0);
+    color: rgb(224, 221, 0);
+    background-color: rgb(27, 27, 0);
     justify-content: center;
     align-items: center;
     display: flex
