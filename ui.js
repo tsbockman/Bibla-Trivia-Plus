@@ -1,49 +1,31 @@
 'use strict';
 
-var main = document.getElementById('decks');
+let decks = document.getElementById('decks');
 for(let catX = 0; catX < categories.length; ++catX) {
     let catName = categories[catX].name;
-    
-    let catDiv = document.createElement('div');
-    catDiv.className = "flex";
 
-    let catButton = document.createElement('div');
-    catButton.classList.add('button', 'm0');
+    let catButton = document.createElement('button');
     catButton.id = 'draw-' + catName;
     catButton.innerHTML = 'Draw<br>' + catName;
-    catDiv.appendChild(catButton);
-
-    let catQuestion = document.createElement('div');
-    catQuestion.classList.add('question', 'm0');
-    catQuestion.id = 'question-' + catName;
-    catDiv.appendChild(catQuestion);
-
-    let catAnswer = document.createElement('div');
-    catAnswer.classList.add('answer', 'm0');
-    catAnswer.id = 'answer-' + catName;
-    catDiv.appendChild(catAnswer);
-
-    let catReference = document.createElement('div');
-    catReference.classList.add('reference', 'm0');
-    catReference.id = 'reference-' + catName;
-    catDiv.appendChild(catReference);
-
-    main.appendChild(catDiv);
-
     catButton.onclick = function() {
-        var card = draw(catX)[1];
-        catQuestion.innerHTML = card.question.toString();
-        catAnswer.innerHTML = card.answer.toString();
-        catReference.innerHTML = card.reference.toString();
-    };
-}
+        let drawn = drawSeveral(catX, 1);
 
-// example of closure function
-function createFunction(x) {
-    return function() {
-        console.log(x)
-    };
-}
+        document.getElementById('question').innerHTML = drawn[0].question;
 
-var created = createFunction('hello');
-created();
+        let radios = document.getElementById('radios');
+        radios.innerHTML = '';
+
+        for(let drawnX = 0; drawnX < drawn.length; ++drawnX) {
+            let answerRadio = document.createElement('input');
+            answerRadio.type = 'radio';
+            answerRadio.id = 'answer' + drawnX;
+            radios.appendChild(answerRadio);
+
+            let answerLabel = document.createElement('label');
+            answerLabel.htmlFor = answerRadio.id;
+            answerLabel.innerHTML = drawn[drawnX].answer;
+            radios.appendChild(answerLabel);
+        }
+    };
+    decks.appendChild(catButton);
+}

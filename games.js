@@ -99,3 +99,21 @@ function draw(catX){
     return [cardX, categories[catX].deck[cardX]];
 }
 
+function drawSeveral(catX, drawCount) {
+    let real = draw(catX);
+    // TODO: Draw drawCount - 1 additional wrong answers from the category deck.
+    let fakeAnswers = [];
+
+    while(fakeAnswers.length < (drawCount - 1)){
+        var randomX = Math.floor(Math.random()*fresh[catX].length);
+        var otherCard = categories[catX].deck[randomX];
+        if(real[1].answer != otherCard.answer){
+            fakeAnswers.push(otherCard.answer);
+        }
+    }
+    
+
+
+    // TODO: Combine the real and fake somehow.
+    return [ real[1], fakeAnswers ];
+}
