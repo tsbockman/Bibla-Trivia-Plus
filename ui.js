@@ -8,7 +8,7 @@ for(let catX = 0; catX < categories.length; ++catX) {
     catButton.id = 'draw-' + catName;
     catButton.innerHTML = 'Draw<br>' + catName;
     catButton.onclick = function() {
-        let drawn = drawSeveral(catX, 1);
+        let drawn = drawSeveral(catX, 4);
 
         document.getElementById('question').innerHTML = drawn[0].question;
 
@@ -18,6 +18,8 @@ for(let catX = 0; catX < categories.length; ++catX) {
         for(let drawnX = 0; drawnX < drawn.length; ++drawnX) {
             let answerRadio = document.createElement('input');
             answerRadio.type = 'radio';
+            answerRadio.setAttribute('name', 'answers');
+            answerRadio.setAttribute('class', 'radio');
             answerRadio.id = 'answer' + drawnX;
             radios.appendChild(answerRadio);
 

@@ -14,3 +14,11 @@ body {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
 }
+
+.question {
+padding: 3em;
+}
+
+.radio {
+    display:block;
+}
