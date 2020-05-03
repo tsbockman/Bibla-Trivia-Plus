@@ -24,6 +24,7 @@ for(let catX = 0; catX < categories.length; ++catX) {
             radios.appendChild(answerRadio);
 
             let answerLabel = document.createElement('label');
+            answerLabel.setAttribute('class', 'radio-label');
             answerLabel.htmlFor = answerRadio.id;
             answerLabel.innerHTML = drawn[drawnX].answer;
             radios.appendChild(answerLabel);

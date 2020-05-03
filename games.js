@@ -100,19 +100,24 @@ function draw(catX){
 }
 
 function drawSeveral(catX, drawCount) {
-    let realCard = draw(catX);
-    let hand = [realCard[1]];
-    // TODO: Draw drawCount - 1 additional wrong answers from the category deck.
-
-    while(hand.length < (drawCount)){
-        var randomX = Math.floor(Math.random()*fresh[catX].length);
-        var otherCard = categories[catX].deck[randomX];
-        var realAnswer = realCard[1].answer;
-        if(realAnswer === otherCard.answer){
-
-        } else { hand.push(otherCard); }
+    try {
+        let realCard = draw(catX);
+        let realX = realCard[0];
+        let hand = [realCard[1]];
+        let cardXList = [realX];
+        // TODO: Draw drawCount - 1 additional wrong answers from the category deck.
+    
+        while(hand.length < (drawCount)){
+            var randomX = Math.floor(Math.random()*categories[catX].deck.length);
+            if(!cardXList.includes(randomX)){  
+                var otherCard = categories[catX].deck[randomX];
+                cardXList.push(randomX);
+                hand.push(otherCard);
+            }
+        }
+        return hand;
+    } catch(err) {
+        console.log("something broke: " + err)
     }
-
-    // TODO: Combine the real and fake somehow.
-    return hand;
+    
 }

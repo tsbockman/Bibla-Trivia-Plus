@@ -70,19 +70,30 @@ torah,What is the most well known gift Jacob gave to Joseph?,A multi-colored rob
 torah,What warning did Joseph find in Pharaoh's dreams?,Seven years of plenty followed by seven years of severe famine,Genesis 41:29-30
 history,history question sample 1,answer sample 1,reference sample 1
 history,history question sample 2,answer sample 2,reference sample 2
+history,history question sample 3,answer sample 3,reference sample 3
+history,history question sample 4,answer sample 4,reference sample 4
 wisdom,It is better to go to the house of _________ than to go to the house of feasting,mourning ,Ecclesiastes 7:2
 wisdom,The ____ of the LORD is the beginning of knowledge.,fear,Proverbs 1:7
 wisdom,Be not ____ in your own eyes; fear the LORD and turn away from evil.,wise,Proverbs 3:7
-history,history question sample 1,answer sample 1,reference sample 1
-history,history question sample 2,answer sample 2,reference sample 2
+wisdom,wisdom question sample 1,answer sample 1,reference sample 1
 prophets,prophets question sample 1,answer sample 1,reference sample 1
 prophets,prophets question sample 2,answer sample 2,reference sample 2
+prophets,prophets question sample 3,answer sample 3,reference sample 3
+prophets,prophets question sample 4,answer sample 4,reference sample 4
 gospels,gospels question sample 1,answer sample 1,reference sample 1
 gospels,gospels question sample 2,answer sample 2,reference sample 2
+gospels,gospels question sample 3,answer sample 3,reference sample 3
+gospels,gospels question sample 4,answer sample 4,reference sample 4
 acts,acts question sample 1,answer sample 1,reference sample 1
 acts,acts question sample 2,answer sample 2,reference sample 2
+acts,acts question sample 3,answer sample 3,reference sample 3
+acts,acts question sample 4,answer sample 4,reference sample 4
 paul,paul question sample 1,answer sample 1,reference sample 1
 paul,paul question sample 2,answer sample 2,reference sample 2
+paul,paul question sample 3,answer sample 3,reference sample 3
+paul,paul question sample 4,answer sample 4,reference sample 4
 epistles,epistles question sample 1,answer sample 1,reference sample 1
 epistles,epistles question sample 2,answer sample 2,reference sample 2
+epistles,epistles question sample 3,answer sample 3,reference sample 3
+epistles,epistles question sample 4,answer sample 4,reference sample 4
 `;
