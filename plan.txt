@@ -1,7 +1,8 @@
 TODO:
 
-Q&A UI
------caught up-----
-Grading System (Multi Choice?)
-card
-
+showing scripture reference when grading 
+prevent duplicate answers from different cards with same answer
+card answer meta data for answer filtering
+gameboard
+roll the dice 
+game rules (logic)

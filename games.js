@@ -39,17 +39,17 @@ class Card {
 
 // load the cards
 cards_csv.split('\n').forEach((lineStr, lineNum) => {
-    var lineStr = lineStr.trim();
+    lineStr = lineStr.trim();
     if (lineStr.length <= 0)
         return;
     try {
-        var cells = lineStr.split(",");
-        var cellCount = cells.length;
+        let cells = lineStr.split(",");
+        let cellCount = cells.length;
         if (cellCount != 4) {
             throw new Error(cellCount + " cells were found, but there should be 4.")
         }
-        var deck = categories[findCategoryIndex(cells[0].trimEnd())].deck;
-        var card = new Card(cells[1].trim(), cells[2].trim(), cells[3].trimStart());
+        let deck = categories[findCategoryIndex(cells[0].trimEnd())].deck;
+        let card = new Card(cells[1].trim(), cells[2].trim(), cells[3].trimStart());
         deck.push(card);
     }
     catch(e) {
@@ -58,9 +58,9 @@ cards_csv.split('\n').forEach((lineStr, lineNum) => {
 });
 
 // Destroy all empty Categories!!!!!
-var catX = 0;
+let catX = 0;
 while (catX < categories.length) {
-    var deck = categories[catX].deck;
+    let deck = categories[catX].deck;
     if (deck.length <= 0) {
         console.log("WARNING 'cards.csv' contains no cards for category '" + categories[catX].name + "'.");
         categories.splice(catX, 1);
@@ -79,7 +79,7 @@ for(let x=0; x < categories.length; ++x){ // initaites an empty list for every c
 // Prep deck of numbers to be spliced from and insert into master container called fresh
 function prepDeck(catX){
     fresh[catX] = [];
-    var deckLength =  categories[catX].deck.length;
+    let deckLength =  categories[catX].deck.length;
     for(let cardX = 0; cardX < deckLength; ++cardX){
         fresh[catX][cardX] = cardX;
     }
@@ -93,31 +93,30 @@ function draw(catX){
     }
 
     // freshX is just a random number that is selected in comparison to the lenth of the deck
-    var freshX = Math.floor(Math.random()*fresh[catX].length);
+    let freshX = Math.floor(Math.random()*fresh[catX].length);
     // cardX is the actual card drawn from the deck, a splice is performed to remove that it from the master list
-    var cardX = fresh[catX].splice(freshX, 1)[0];
+    let cardX = fresh[catX].splice(freshX, 1)[0];
     return [cardX, categories[catX].deck[cardX]];
 }
 
 function drawSeveral(catX, drawCount) {
-    try {
-        let realCard = draw(catX);
-        let realX = realCard[0];
-        let hand = [realCard[1]];
-        let cardXList = [realX];
-        // TODO: Draw drawCount - 1 additional wrong answers from the category deck.
-    
-        while(hand.length < (drawCount)){
-            var randomX = Math.floor(Math.random()*categories[catX].deck.length);
-            if(!cardXList.includes(randomX)){  
-                var otherCard = categories[catX].deck[randomX];
-                cardXList.push(randomX);
-                hand.push(otherCard);
-            }
-        }
-        return hand;
-    } catch(err) {
-        console.log("something broke: " + err)
+    if(drawCount*2 >= categories[catX].deck.length){
+        throw new Error("Category does not have enough cards");
     }
-    
+
+    let realDraw = draw(catX);
+    let hand = new Set([ realDraw[0] ]);
+    let shuffled = new Array(drawCount-1);
+    let shuffledX = 0;
+    while(hand.size < drawCount) {
+        let randomX = Math.floor(Math.random()*categories[catX].deck.length);
+        if(!hand.has(randomX)) {
+            hand.add(randomX);
+            shuffled[shuffledX] = categories[catX].deck[randomX];
+            shuffledX += 1;
+        }
+    }
+    shuffledX = Math.floor(Math.random()*drawCount);
+    shuffled.splice(shuffledX, 0, realDraw[1]);
+    return [ realDraw[1], shuffled ];
 }
