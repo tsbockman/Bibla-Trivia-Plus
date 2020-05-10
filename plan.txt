@@ -1,6 +1,5 @@
 TODO:
 
-showing scripture reference when grading 
 prevent duplicate answers from different cards with same answer
 card answer meta data for answer filtering
 gameboard

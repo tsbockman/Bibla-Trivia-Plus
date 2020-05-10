@@ -10,7 +10,10 @@ for(let catX = 0; catX < categories.length; ++catX) {
     catButton.onclick = function() {
         let drawn = drawSeveral(catX, 4);
 
-        document.getElementById('question').innerHTML = drawn[0].question;
+        let question = document.getElementById('question');
+        question.classList.add('unanswered');
+        question.innerHTML = drawn[0].question +
+            ' <span class="reference">(' + drawn[0].reference + ')</span>';
 
         let radios = document.getElementById('radios');
         radios.innerHTML = '';
@@ -43,5 +46,6 @@ document.getElementById('answers').onsubmit = function(event) {
         alert('Cheater, cheater, CHEATER! (Probably. Sorry if this is really my fault because it\'s actually a bug.)');
     else
         alert('Please choose an answer first.');
+    document.getElementById('question').classList.remove('unanswered');
     event.preventDefault();
 };
