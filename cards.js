@@ -7,51 +7,51 @@ let cardsJSON = `[
 		"deck": [
 			{
 				"question": "God said 'let there be light' on which of the first six days?",
-				"questionTags": [ "day" ],
+				"questionTags": [ "day", "<=6" ],
 				"answer": "The First Day",
 				"answerTags": [ "time" ],
 				"reference": "Genesis 1:3-5"
 			},
 			{
 				"question": "God created the expanse of the heavens on which of the first six days?",
-				"questionTags": [ "day" ],
+				"questionTags": [ "day", "<=6" ],
 				"answer": "The Second Day",
 				"answerTags": [ "time" ],
 				"reference": "Genesis 1:6-8"
 			},
 			{
 				"question": "God created vegetation on which of the first six days?",
-				"questionTags": [],
+				"questionTags": [ "day", "<=6" ],
 				"answer": "The Third Day",
-				"answerTags": [],
+				"answerTags": [ "time" ],
 				"reference": "Genesis 1:11-13"
 			},
 			{
 				"question": "God created lights in the expanse of the heavens on which of the first six days?",
-				"questionTags": [],
+				"questionTags": [ "day", "<=6" ],
 				"answer": "The Fourth Day",
-				"answerTags": [],
+				"answerTags": [ "time" ],
 				"reference": "Genesis 1:14-19"
 			},
 			{
 				"question": "God created living creatures in the waters and skies on which of the first six days?",
-				"questionTags": [],
+				"questionTags": [ "day", "<=6" ],
 				"answer": "The Fifth Day",
-				"answerTags": [],
+				"answerTags": [ "time" ],
 				"reference": "Genesis 1:20-23"
 			},
 			{
 				"question": "God created Adam on which of the first six days?",
-				"questionTags": [],
+				"questionTags": [ "day", "<=6" ],
 				"answer": "The Sixth Day",
-				"answerTags": [],
+				"answerTags": [ "time" ],
 				"reference": "Genesis 1:26-31"
 			},
 			{
 				"question": "God rested on which day of the first week?",
-				"questionTags": [],
+				"questionTags": [ "day" ],
 				"answer": "The Seventh Day",
-				"answerTags": [],
+				"answerTags": [ "time" ],
 				"reference": "Genesis 2:1-3"
 			},
 			{
