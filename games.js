@@ -61,39 +61,66 @@ function draw(catX){
 }
 
 function drawSeveral(catX, drawCount) {
-    let realDraw = draw(catX);
+    let realDraw = draw(catX); // Choose a random question card.
+    let shuffledHand = [ realDraw.answer ]; // Include the real answer.
 
-    let plausibleSet = new Set();
-    for(let qTagX = 0; qTagX < realDraw.questionTags.length; ++qTagX) {
-        let tagSet = tagMap.get(realDraw.questionTags[qTagX]);
-        for(let answer of tagSet)
-            plausibleSet.add(answer);
-    }
-    let plausible = new Array(plausibleSet.size);
-    let plausibleX = 0;
-    for(let answer of plausibleSet) {
-        plausible[plausibleX] = answer;
-        ++plausibleX;
-    }
+    if(drawCount > 1 && realDraw.questionTags.length >= 1) {
+        // Get all of the question's tags' answer sets, making note of which is smallest:
+        let smallestSet = tagMap.get(realDraw.questionTags[0]);
+        let largerSets = new Array(realDraw.questionTags.length-1);
+        for(let qTagX = 1; qTagX < realDraw.questionTags.length; ++qTagX) {
+            let tagSet = tagMap.get(realDraw.questionTags[qTagX]);
+            if(!(tagSet.size >= smallestSet.size)) {
+                let swap = smallestSet;
+                smallestSet = tagSet;
+                tagSet = swap;
+            }
+            largerSets[qTagX-1] = tagSet;
+        }
 
-    if(drawCount*3 > plausible.length*2)
-        drawCount = Math.floor(plausible.length*2/3);
-    if(!(drawCount >= 1))
-        drawCount = 1;
+        // Compute the intersection of the question's tags' answer sets:
+        let plausibleSet = new Set(smallestSet); // Start with a shallow copy, to avoid modifying the original tag set.
+        for(let largeX = 0; largeX < largerSets.length; ++largeX) {
+            let largerSet = largerSets[largeX];
+            for(let answer of plausibleSet) {
+                if(!largerSet.has(answer))
+                    plausibleSet.remove(answer);
+            }
+        }
 
-    let hand = new Set([ realDraw.answer ]);
-    let shuffledHand = new Array(drawCount-1);
-    let shuffledX = 0;
-    while(hand.size < drawCount) {
-        // TODO: Fix infinite run-time worst case.
-        let answer = plausible[Math.floor(Math.random()*plausible.length)];
-        if(!hand.has(answer)) {
-            hand.add(answer);
-            shuffledHand[shuffledX] = answer;
-            ++shuffledX;
+        // Convert the plausible answer set to an array so that we can get answers by numerical index:
+        let plausible = new Array(plausibleSet.size);
+        let plausibleX = 0;
+        for(let answer of plausibleSet) {
+            plausible[plausibleX] = answer;
+            ++plausibleX;
+        }
+
+        // Limit the number of answers to a number that can be quickly and reliably retrieved:
+        if(drawCount*3 > plausible.length*2)
+            drawCount = Math.floor(plausible.length*2/3);
+
+        if(drawCount > 1) {
+            // Fill out the hand with random plausible wrong answers:
+            let hand = new Set(shuffledHand);
+            shuffledHand.length = drawCount;
+            let shuffledX = 1;
+            while(hand.size < drawCount) {
+                // TODO: Fix infinite run-time worst case.
+                let answer = plausible[Math.floor(Math.random()*plausible.length)];
+                if(!hand.has(answer)) {
+                    hand.add(answer);
+                    shuffledHand[shuffledX] = answer;
+                    ++shuffledX;
+                }
+            }
+
+            // Swap the real answer into a random location in the hand:
+            shuffledX = Math.floor(Math.random()*drawCount);
+            shuffledHand[0] = shuffledHand[shuffledX];
+            shuffledHand[shuffledX] = realDraw.answer;
         }
     }
-    shuffledX = Math.floor(Math.random()*drawCount);
-    shuffledHand.splice(shuffledX, 0, realDraw.answer);
+
     return [ realDraw, shuffledHand ];
 }
