@@ -105,7 +105,7 @@ let cardsJSON = `[
 			},
 			{
 				"question": "How many years did Adam live?",
-				"questionTags": [],
+				"questionTags": [ "age" ],
 				"answer": "930 years",
 				"answerTags": [],
 				"reference": "Genesis 5:5"
@@ -140,7 +140,7 @@ let cardsJSON = `[
 			},
 			{
 				"question": "How old was Noah when God flooded the earth?",
-				"questionTags": [],
+				"questionTags": [ "age" ],
 				"answer": "600 years",
 				"answerTags": [],
 				"reference": "Genesis 7:6"
@@ -210,7 +210,7 @@ let cardsJSON = `[
 			},
 			{
 				"question": "How old was Abram when God told him to leave Haran?",
-				"questionTags": [],
+				"questionTags": [ "age" ],
 				"answer": "75 years",
 				"answerTags": [],
 				"reference": "Genesis 12:4"
@@ -308,7 +308,7 @@ let cardsJSON = `[
 			},
 			{
 				"question": "How old was Abraham when he was circumcised?",
-				"questionTags": [],
+				"questionTags": [ "age" ],
 				"answer": "99 years",
 				"answerTags": [],
 				"reference": "Genesis 17:24"
@@ -399,14 +399,14 @@ let cardsJSON = `[
 			},
 			{
 				"question": "How long did Jacob wait to for Rachel?",
-				"questionTags": [],
+				"questionTags": [ "age" ],
 				"answer": "7 years and 1 week",
 				"answerTags": [],
 				"reference": "Genesis 29:20-30"
 			},
 			{
 				"question": "How long did Jacob actually serve Laben to gain Rachel as his wife?",
-				"questionTags": [],
+				"questionTags": [ "age" ],
 				"answer": "14 years",
 				"answerTags": [],
 				"reference": "Genesis 29:20-30"

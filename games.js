@@ -2,7 +2,14 @@
 
 // Load all cards
 var categories = JSON.parse(cardsJSON);
-// TODO FIXME: validate with a JSON schema
+/* TODO FIXME: validate with a JSON schema
+var cardsSchema = {
+
+};
+import Ajv from 'ajv';
+var ajv = new Ajv();
+if(!ajv.validate(cardsSchema, categories))
+    console.log(ajv.errors);*/
 
 // Process answer tags
 var tagMap = new Map();
@@ -89,12 +96,7 @@ function drawSeveral(catX, drawCount) {
         }
 
         // Convert the plausible answer set to an array so that we can get answers by numerical index:
-        let plausible = new Array(plausibleSet.size);
-        let plausibleX = 0;
-        for(let answer of plausibleSet) {
-            plausible[plausibleX] = answer;
-            ++plausibleX;
-        }
+        let plausible = Array.from(plausibleSet);
 
         // Limit the number of answers to a number that can be quickly and reliably retrieved:
         if(drawCount*3 > plausible.length*2)
