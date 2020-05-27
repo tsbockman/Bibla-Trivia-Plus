@@ -7,26 +7,56 @@ var cardsSchema = {
     "type": "array",
     "items": {
         "type": "object",
+        "additionalProperties": false,
+        "required": [ "name", "title", "deck" ],
         "properties": {
             "name": { "type": "string" },
             "title": { "type": "string" },
             "deck": {
                 "type": "array",
                 "items": {
-                    "type": "object",
-                    "properties": {
-                        "question": { "type": "string" },
-                        "questionTags": {
-                            "type": "array",
-                            "items": { "type": "string" },
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [ "questionType", "question", "questionTags", "answer", "answerTags", "reference" ],
+                            "properties": {
+                                "questionType": {
+                                    "type": "string",
+                                    "enum": [ "tagged", "numeric" ]
+                                },
+                                "question": { "type": "string" },
+                                "questionTags": {
+                                    "type": "array",
+                                    "items": { "type": "string" },
+                                },
+                                "answer": { "type": "string" },
+                                "answerTags": {
+                                    "type": "array",
+                                    "items": { "type": "string" }
+                                },
+                                "reference": { "type": "string" }
+                            }
                         },
-                        "answer": { "type": "string" },
-                        "answerTags": {
-                            "type": "array",
-                            "items": { "type": "string" }
-                        },
-                        "reference": { "type": "string" }
-                    }
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [ "questionType", "question", "unitSingular", "answer", "minPlausible", "maxPlausible", "reference" ],
+                            "properties": {
+                                "questionType": {
+                                    "type": "string",
+                                    "enum": [ "tagged", "numeric" ]
+                                },
+                                "question": { "type": "string" },
+                                "unitSingular": { "type": "string" },
+                                "answer": { "type": "string" },
+                                "minPlausible": { "type": "number" },
+                                "maxPlausible": { "type": "number" },
+                                /*TODO: "plausibleDistribution" */
+                                "reference": { "type": "string" }
+                            }
+                        }
+                    ]
                 }
             }
         }
@@ -34,7 +64,7 @@ var cardsSchema = {
 };
 var ajv = new Ajv();
 if(!ajv.validate(cardsSchema, categories))
-    console.log('Invalid cards JSON: ' + ajv.errors);
+    console.log('Invalid cards JSON: ' + JSON.stringify(ajv.errors));
 
 // Process answer tags
 var tagMap = new Map();
@@ -52,11 +82,13 @@ var tagMap = new Map();
         let deck = categories[catX].deck;
         for(let cardX = 0; cardX < deck.length; ++cardX) {
             let card = deck[cardX];
-            for(let qTagX = 0; qTagX < card.questionTags.length; ++qTagX) {
-                addAnswerToTag(card.questionTags[qTagX], card.answer);
-            }
-            for(let aTagX = 0; aTagX < card.answerTags.length; ++aTagX) {
-                addAnswerToTag(card.questionTags[aTagX], card.answer);
+            if(card.questionType === "tagged"){
+                for(let qTagX = 0; qTagX < card.questionTags.length; ++qTagX) {
+                    addAnswerToTag(card.questionTags[qTagX], card.answer);
+                }
+                for(let aTagX = 0; aTagX < card.answerTags.length; ++aTagX) {
+                    addAnswerToTag(card.answerTags[aTagX], card.answer);
+                }
             }
         }
     }
@@ -96,7 +128,8 @@ function drawSeveral(catX, drawCount) {
     let realDraw = draw(catX); // Choose a random question card.
     let shuffledHand = [ realDraw.answer ]; // Include the real answer.
 
-    if(drawCount > 1 && realDraw.questionTags.length >= 1) {
+    if(realDraw.questionType === 'tagged' &&
+    drawCount > 1 && realDraw.questionTags.length >= 1) {
         // Get all of the question's tags' answer sets, making note of which is smallest:
         let smallestSet = tagMap.get(realDraw.questionTags[0]);
         let largerSets = new Array(realDraw.questionTags.length-1);
