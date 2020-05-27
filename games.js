@@ -2,14 +2,39 @@
 
 // Load all cards
 var categories = JSON.parse(cardsJSON);
-/* TODO FIXME: validate with a JSON schema
 var cardsSchema = {
-
+    "$schema": "http://json-schema.org/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "name": { "type": "string" },
+            "title": { "type": "string" },
+            "deck": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "question": { "type": "string" },
+                        "questionTags": {
+                            "type": "array",
+                            "items": { "type": "string" },
+                        },
+                        "answer": { "type": "string" },
+                        "answerTags": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                        },
+                        "reference": { "type": "string" }
+                    }
+                }
+            }
+        }
+    }
 };
-import Ajv from 'ajv';
 var ajv = new Ajv();
 if(!ajv.validate(cardsSchema, categories))
-    console.log(ajv.errors);*/
+    console.log('Invalid cards JSON: ' + ajv.errors);
 
 // Process answer tags
 var tagMap = new Map();
