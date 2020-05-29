@@ -118,11 +118,12 @@ let cardsJSON = `[
 				"reference": "Genesis 4:19"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How many years did Adam live?",
-				"questionTags": [ "age" ],
 				"answer": "930 years",
-				"answerTags": [],
+				"minPlausible": 1000,
+				"maxPlausible": 100,
+				"unitSingular": "years",
 				"reference": "Genesis 5:5"
 			},
 			{
@@ -150,27 +151,31 @@ let cardsJSON = `[
 				"reference": "Genesis 6:14"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How long was Noah's ark?",
-				"questionTags": [],
-				"answer": "300 cubits/450 feet",
-				"answerTags": [],
+				"answer": "300 cubits",
+				"minPlausible": 20,
+				"maxPlausible": 500,
+				"unitSingular": "cubits",
 				"reference": "Genesis 6:15"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How old was Noah when God flooded the earth?",
 				"questionTags": [ "age" ],
 				"answer": "600 years",
-				"answerTags": [],
+				"minPlausible": 60,
+				"maxPlausible": 900,
+				"unitSingular": "years",
 				"reference": "Genesis 7:6"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How long did the waters prevail during the great flood?",
-				"questionTags": [ "age" ],
 				"answer": "150 days",
-				"answerTags": [],
+				"minPlausible": 10,
+				"maxPlausible": 300,
+				"unitSingular": "years",
 				"reference": "Genesis 7:24"
 			},
 			{
@@ -208,9 +213,9 @@ let cardsJSON = `[
 			{
 				"questionType": "tagged",
 				"question": "When God allowed people to eat animals he forbade them from eating it with what part?",
-				"questionTags": [],
+				"questionTags": [ ],
 				"answer": "The blood",
-				"answerTags": [],
+				"answerTags": [ "item" ],
 				"reference": "Genesis 9:4"
 			},
 			{
@@ -238,11 +243,12 @@ let cardsJSON = `[
 				"reference": "Genesis 11:10-26"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How old was Abram when God told him to leave Haran?",
-				"questionTags": [ "age" ],
 				"answer": "75 years",
-				"answerTags": [],
+				"minPlausible": 200,
+				"maxPlausible": 30,
+				"unitSingular": "years",
 				"reference": "Genesis 12:4"
 			},
 			{
@@ -298,7 +304,7 @@ let cardsJSON = `[
 				"question": "What two things did Melchizedek bring out to Abram after he defeated Chedorlaomer?",
 				"questionTags": [ "item" ],
 				"answer": "Bread and wine",
-				"answerTags": [],
+				"answerTags": [ "item" ],
 				"reference": "Genesis 14:18"
 			},
 			{
@@ -330,7 +336,7 @@ let cardsJSON = `[
 				"question": "During the sacrifice that established the Abrahamic Covenant what passed between the animal pieces?",
 				"questionTags": [ "item" ],
 				"answer": "A flaming torch",
-				"answerTags": [],
+				"answerTags": [ "item" ],
 				"reference": "Genesis 15:17"
 			},
 			{
@@ -350,19 +356,21 @@ let cardsJSON = `[
 				"reference": "Genesis 16:15"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How old was Abraham when he was circumcised?",
-				"questionTags": [ "age" ],
 				"answer": "99 years",
-				"answerTags": [],
+				"minPlausible": 1,
+				"maxPlausible": 176,
+				"unitSingular": "years",
 				"reference": "Genesis 17:24"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "At first - how many righteous people did Abraham ask God to spare Sodom for?",
-				"questionTags": [],
-				"answer": "50",
-				"answerTags": [],
+				"answer": "50 people",
+				"minPlausible": 100,
+				"maxPlausible": 1,
+				"unitSingular": "people",
 				"reference": "Genesis 18:24"
 			},
 			{
@@ -454,19 +462,21 @@ let cardsJSON = `[
 				"reference": "Genesis 28:2"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How long did Jacob wait to for Rachel?",
-				"questionTags": [ "age" ],
-				"answer": "7 years and 1 week",
-				"answerTags": [],
+				"answer": "7 years",
+				"minPlausible": 30,
+				"maxPlausible": 1,
+				"unitSingular": "years",
 				"reference": "Genesis 29:20-30"
 			},
 			{
-				"questionType": "tagged",
+				"questionType": "numeric",
 				"question": "How long did Jacob actually serve Laben to gain Rachel as his wife?",
-				"questionTags": [ "age" ],
 				"answer": "14 years",
-				"answerTags": [],
+				"minPlausible": 100,
+				"maxPlausible": 1,
+				"unitSingular": "years",
 				"reference": "Genesis 29:20-30"
 			},
 			{
