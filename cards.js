@@ -123,7 +123,8 @@ let cardsJSON = `[
 				"answer": "930 years",
 				"minPlausible": 1000,
 				"maxPlausible": 100,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 5:5"
 			},
 			{
@@ -154,19 +155,20 @@ let cardsJSON = `[
 				"questionType": "numeric",
 				"question": "How long was Noah's ark?",
 				"answer": "300 cubits",
-				"minPlausible": 20,
+				"minPlausible": 1,
 				"maxPlausible": 500,
-				"unitSingular": "cubits",
+				"unitSingular": "cubit",
+				"unitPlural": "cubits",
 				"reference": "Genesis 6:15"
 			},
 			{
 				"questionType": "numeric",
 				"question": "How old was Noah when God flooded the earth?",
-				"questionTags": [ "age" ],
 				"answer": "600 years",
 				"minPlausible": 60,
 				"maxPlausible": 900,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 7:6"
 			},
 			{
@@ -175,7 +177,8 @@ let cardsJSON = `[
 				"answer": "150 days",
 				"minPlausible": 10,
 				"maxPlausible": 300,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 7:24"
 			},
 			{
@@ -248,7 +251,8 @@ let cardsJSON = `[
 				"answer": "75 years",
 				"minPlausible": 200,
 				"maxPlausible": 30,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 12:4"
 			},
 			{
@@ -361,7 +365,8 @@ let cardsJSON = `[
 				"answer": "99 years",
 				"minPlausible": 1,
 				"maxPlausible": 176,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 17:24"
 			},
 			{
@@ -370,7 +375,8 @@ let cardsJSON = `[
 				"answer": "50 people",
 				"minPlausible": 100,
 				"maxPlausible": 1,
-				"unitSingular": "people",
+				"unitSingular": "person",
+				"unitPlural": "people",
 				"reference": "Genesis 18:24"
 			},
 			{
@@ -467,7 +473,8 @@ let cardsJSON = `[
 				"answer": "7 years",
 				"minPlausible": 30,
 				"maxPlausible": 1,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 29:20-30"
 			},
 			{
@@ -476,7 +483,8 @@ let cardsJSON = `[
 				"answer": "14 years",
 				"minPlausible": 100,
 				"maxPlausible": 1,
-				"unitSingular": "years",
+				"unitSingular": "year",
+				"unitPlural": "years",
 				"reference": "Genesis 29:20-30"
 			},
 			{

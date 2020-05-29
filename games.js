@@ -52,6 +52,7 @@ var cardsSchema = {
                                 "minPlausible": { "type": "number" },
                                 "maxPlausible": { "type": "number" },
                                 "unitSingular": { "type": "string" },
+                                "unitPlural": { "type": "string" },
                                 /*TODO: "plausibleDistribution" */
                                 "reference": { "type": "string" }
                             }
@@ -191,8 +192,15 @@ function drawSeveral(catX, drawCount) {
             let shuffledX = 1;
             while(hand.size < drawCount) {
                 // TODO: Fix infinite run-time worst case.
-                let answer = Math.floor(Math.random() * 
-                (realDraw.maxPlausible - realDraw.minPlausible) + realDraw.minPlausible).toString() + " " + realDraw.unitSingular;
+                let randomNumber = Math.floor(Math.random() * 
+                (realDraw.maxPlausible - realDraw.minPlausible) + realDraw.minPlausible);
+                let answer;
+                if(randomNumber == 1){
+                    answer = randomNumber.toString() + " " + realDraw.unitSingular;
+                } else {
+                    answer = randomNumber.toString() + " " + realDraw.unitPlural;
+                }
+
                 if(!hand.has(answer)) {
                     hand.add(answer);
                     shuffledHand[shuffledX] = answer;
