@@ -194,12 +194,8 @@ function drawSeveral(catX, drawCount) {
                 // TODO: Fix infinite run-time worst case.
                 let randomNumber = Math.floor(Math.random() * 
                 (realDraw.maxPlausible - realDraw.minPlausible) + realDraw.minPlausible);
-                let answer;
-                if(randomNumber == 1){
-                    answer = randomNumber.toString() + " " + realDraw.unitSingular;
-                } else {
-                    answer = randomNumber.toString() + " " + realDraw.unitPlural;
-                }
+                let unit = (randomNumber == 1)? realDraw.unitSingular : realDraw.unitPlural;
+                let answer = randomNumber.toString() + " " + unit;
 
                 if(!hand.has(answer)) {
                     hand.add(answer);
