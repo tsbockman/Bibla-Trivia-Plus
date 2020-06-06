@@ -241,6 +241,7 @@ function drawSeveral(catX, drawCount) {
             drawCount = shuffledHand.length;
             }
 
+            // if there are less answers than drawCount adjust
             if(realDraw.listOfAnswers.length < (drawCount-1)){
                 drawCount = realDraw.listOfAnswers.length + 1;
                 shuffledHand.length = drawCount;

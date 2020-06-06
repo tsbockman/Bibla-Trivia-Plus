@@ -610,11 +610,15 @@ let cardsJSON = `[
 		"title": "Wisdom",
 		"deck": [
 			{
-				"questionType": "tagged",
+				"questionType": "predefined",
 				"question": "It is better to go to the house of _________ than to go to the house of feasting",
-				"questionTags": [],
 				"answer": "mourning",
-				"answerTags": [],
+				"listOfAnswers": [ 
+					"darkness",
+					"starvation",
+					"peace"
+				],
+				"overload": "",
 				"reference": "Ecclesiastes 7:2"
 			},
 			{
