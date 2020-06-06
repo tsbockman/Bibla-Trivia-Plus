@@ -8,11 +8,14 @@ let cardsJSON = `[
 			{
 				"questionType": "predefined",
 				"question": "What are the names of Jacob's twelve sons?",
-				"questionTags": [],
-				"answer": "Reuben - Simeon - Levi - Judah - Dan - Naphtali - Gad - Asher - Issachar - Zebulun - Joseph - Benjamin",
-				"firstPlausible": "Reuben - Simeon - Levi - Judea - Dan - Israel - Gad - Asher - Isaac - Zebulun - Joseph - Benjamin",
-				"secondPlausible": "Rehoboam - Simeon - Levi - Judah - Dan - Israel - Gideon - Asher - Issachar - Zebulun - Josiah - Benjamin",
-				"thirdPlausible": "Reuben - Samson - Levi - Judah - Dan - Naphtali - Gad - Asher - Issachar - Zebulun - Joseph - Benjamin",
+				"answer": "Reuben, Simeon, Levi, Judah, Dan, Naphtali, Gad, Asher, Issachar, Zebulun, Joseph, Benjamin",
+				"listOfAnswers": [ 
+					"Reuben, Simeon, Levi, Judea, Dan, Israel, Gad, Asher, Isaac, Zebulun, Joseph, Benjamin",
+					"Rehoboam, Simeon, Levi, Judah, Dan, Israel, Gideon, Asher, Issachar, Zebulun, Josiah, Benjamin",
+					"Reuben, Samson, Levi, Judah, Dan, Naphtali, Gad, Asher, Issachar, Zebulun, Joseph, Benjamin",
+					"Grumpy, Sneezy, Sleepy, Doc, Dopey, Happy, Bashful",
+					"Dasher, Dancer, Prancer, Vixen, Comet, Cupid, Donder, Blitzen"
+				],
 				"reference": "Genesis 29-30"
 			},
 			{

@@ -60,7 +60,7 @@ var cardsSchema = {
                         {
                             "type": "object",
                             "additionalProperties": false,
-                            "required": [ "questionType", "question", "answer", "firstPlausible", "secondPlausible", "thirdPlausible", "reference" ],
+                            "required": [ "questionType", "question", "answer", "listOfAnswers", "reference" ],
                             "properties": {
                                 "questionType": {
                                     "type": "string",
@@ -68,9 +68,10 @@ var cardsSchema = {
                                 },
                                 "question": { "type": "string" },
                                 "answer": { "type": "string" },
-                                "firstPlausible": { "type": "string" },
-                                "secondPlausible": { "type": "string" },
-                                "thirdPlausible": { "type": "string" },
+                                "listOfAnswers": {
+                                    "type": "array",
+                                    "items": { "type": "string" },
+                                },
                                 /*TODO: "plausibleDistribution" */
                                 "reference": { "type": "string" }
                             }
@@ -229,16 +230,24 @@ function drawSeveral(catX, drawCount) {
         }
 
         if(realDraw.questionType === 'predefined'){
-            // Fill out the hand with random plausible wrong answers:
             let hand = new Set(shuffledHand);
             shuffledHand.length = drawCount;
             let shuffledX = 1;
+
+            // Override the size of the return hand to include all answers
+            /*
+            shuffledHand.length = realDraw.listOfAnswers.length + 1;
+            drawCount = shuffledHand.length;
+            */
+
+            if(realDraw.listOfAnswers.length < (drawCount-1)){
+                drawCount = realDraw.listOfAnswers.length + 1;
+                shuffledHand.length = drawCount;
+            }
             while(hand.size < drawCount) {
                 // TODO: Fix infinite run-time worst case.
-                let randomNumber = Math.floor(Math.random() * 
-                (realDraw.maxPlausible - realDraw.minPlausible) + realDraw.minPlausible);
-                let unit = (randomNumber == 1)? realDraw.unitSingular : realDraw.unitPlural;
-                let answer = randomNumber.toString() + " " + unit;
+                let randomNumber = Math.floor(Math.random() * (drawCount-1));
+                let answer = realDraw.listOfAnswers[randomNumber];
 
                 if(!hand.has(answer)) {
                     hand.add(answer);
