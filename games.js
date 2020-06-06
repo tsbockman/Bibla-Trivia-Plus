@@ -72,6 +72,7 @@ var cardsSchema = {
                                     "type": "array",
                                     "items": { "type": "string" },
                                 },
+                                "overload": { "type": "string" },
                                 /*TODO: "plausibleDistribution" */
                                 "reference": { "type": "string" }
                             }
@@ -235,10 +236,10 @@ function drawSeveral(catX, drawCount) {
             let shuffledX = 1;
 
             // Override the size of the return hand to include all answers
-            /*
+            if(realDraw.overload === "yes"){
             shuffledHand.length = realDraw.listOfAnswers.length + 1;
             drawCount = shuffledHand.length;
-            */
+            }
 
             if(realDraw.listOfAnswers.length < (drawCount-1)){
                 drawCount = realDraw.listOfAnswers.length + 1;

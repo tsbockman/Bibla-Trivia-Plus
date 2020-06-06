@@ -16,6 +16,7 @@ let cardsJSON = `[
 					"Grumpy, Sneezy, Sleepy, Doc, Dopey, Happy, Bashful",
 					"Dasher, Dancer, Prancer, Vixen, Comet, Cupid, Donder, Blitzen"
 				],
+				"overload": "yes",
 				"reference": "Genesis 29-30"
 			},
 			{
