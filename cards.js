@@ -6,6 +6,16 @@ let cardsJSON = `[
 		"title": "Torah",
 		"deck": [
 			{
+				"questionType": "predefined",
+				"question": "What are the names of Jacob's twelve sons?",
+				"questionTags": [],
+				"answer": "Reuben - Simeon - Levi - Judah - Dan - Naphtali - Gad - Asher - Issachar - Zebulun - Joseph - Benjamin",
+				"firstPlausible": "Reuben - Simeon - Levi - Judea - Dan - Israel - Gad - Asher - Isaac - Zebulun - Joseph - Benjamin",
+				"secondPlausible": "Rehoboam - Simeon - Levi - Judah - Dan - Israel - Gideon - Asher - Issachar - Zebulun - Josiah - Benjamin",
+				"thirdPlausible": "Reuben - Samson - Levi - Judah - Dan - Naphtali - Gad - Asher - Issachar - Zebulun - Joseph - Benjamin",
+				"reference": "Genesis 29-30"
+			},
+			{
 				"questionType": "tagged",
 				"question": "God said 'let there be light' on which of the first six days?",
 				"questionTags": [ "day", "<=6" ],
@@ -486,14 +496,6 @@ let cardsJSON = `[
 				"unitSingular": "year",
 				"unitPlural": "years",
 				"reference": "Genesis 29:20-30"
-			},
-			{
-				"questionType": "tagged",
-				"question": "What are the names of Jacob's twelve sons?",
-				"questionTags": [],
-				"answer": "Reuben - Simeon - Levi - Judah - Issachar - Dan - Naphtali - Gad - Asher - Issachar - Zebulun - Joseph - Benjamin",
-				"answerTags": [],
-				"reference": "Genesis 29-30"
 			},
 			{
 				"questionType": "tagged",

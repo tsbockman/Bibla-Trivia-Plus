@@ -45,7 +45,7 @@ var cardsSchema = {
                             "properties": {
                                 "questionType": {
                                     "type": "string",
-                                    "enum": [ "tagged", "numeric" ]
+                                    "enum": [ "numeric" ]
                                 },
                                 "question": { "type": "string" },
                                 "answer": { "type": "string" },
@@ -53,6 +53,24 @@ var cardsSchema = {
                                 "maxPlausible": { "type": "number" },
                                 "unitSingular": { "type": "string" },
                                 "unitPlural": { "type": "string" },
+                                /*TODO: "plausibleDistribution" */
+                                "reference": { "type": "string" }
+                            }
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [ "questionType", "question", "answer", "firstPlausible", "secondPlausible", "thirdPlausible", "reference" ],
+                            "properties": {
+                                "questionType": {
+                                    "type": "string",
+                                    "enum": [ "predefined" ]
+                                },
+                                "question": { "type": "string" },
+                                "answer": { "type": "string" },
+                                "firstPlausible": { "type": "string" },
+                                "secondPlausible": { "type": "string" },
+                                "thirdPlausible": { "type": "string" },
                                 /*TODO: "plausibleDistribution" */
                                 "reference": { "type": "string" }
                             }
@@ -186,6 +204,31 @@ function drawSeveral(catX, drawCount) {
         }
 
         if(realDraw.questionType === 'numeric'){
+            // Fill out the hand with random plausible wrong answers:
+            let hand = new Set(shuffledHand);
+            shuffledHand.length = drawCount;
+            let shuffledX = 1;
+            while(hand.size < drawCount) {
+                // TODO: Fix infinite run-time worst case.
+                let randomNumber = Math.floor(Math.random() * 
+                (realDraw.maxPlausible - realDraw.minPlausible) + realDraw.minPlausible);
+                let unit = (randomNumber == 1)? realDraw.unitSingular : realDraw.unitPlural;
+                let answer = randomNumber.toString() + " " + unit;
+
+                if(!hand.has(answer)) {
+                    hand.add(answer);
+                    shuffledHand[shuffledX] = answer;
+                    ++shuffledX;
+                }
+            }
+
+            // Swap the real answer into a random location in the hand:
+            shuffledX = Math.floor(Math.random()*drawCount);
+            shuffledHand[0] = shuffledHand[shuffledX];
+            shuffledHand[shuffledX] = realDraw.answer;
+        }
+
+        if(realDraw.questionType === 'predefined'){
             // Fill out the hand with random plausible wrong answers:
             let hand = new Set(shuffledHand);
             shuffledHand.length = drawCount;
