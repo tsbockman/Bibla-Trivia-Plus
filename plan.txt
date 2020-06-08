@@ -1,7 +1,36 @@
 TODO:
 
-prevent duplicate answers from different cards with same answer
-card answer meta data for answer filtering
 gameboard
 roll the dice 
 game rules (logic)
+
+
+
+
+// Score Keeping Datastructure
+
+Name:
+Torah:
+History:
+Wisdom:
+Prophets:
+Gospels:
+Acts:
+Paul:
+Epistles:
+
+// OT Board
+Torah:
+History:
+Wisdom:
+Prophets:
+repeat
+
+// NT Board
+Gospels:
+Acts:
+Paul:
+Epistles:
+repeat
+
+// Church History Bridge

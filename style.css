@@ -87,7 +87,7 @@ input[type=submit], input[type=reset] {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,.7); /* Black w/ opacity */
-  }
+}
   
 /* Modal Content */
 .modal-content {
