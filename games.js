@@ -1,5 +1,7 @@
 'use strict';
 
+var ajv = new Ajv(); // Import Ajv.
+
 // Load all cards
 var categories = JSON.parse(cardsJSON);
 var cardsSchema = {
@@ -83,7 +85,6 @@ var cardsSchema = {
         }
     }
 };
-var ajv = new Ajv();
 if(!ajv.validate(cardsSchema, categories))
     console.log('Invalid cards JSON: ' + JSON.stringify(ajv.errors));
 
@@ -263,4 +264,103 @@ function drawSeveral(catX, drawCount) {
         }
     }
     return [ realDraw, shuffledHand ];
+}
+
+// Game board
+var board = JSON.parse(boardJSON);
+var boardSchema = {
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [ "startPath", "startSpot", "paths" ],
+    "properties": {
+        "startPath": { "type": "string" },
+        "startSpot": { "type": "integer" },
+        "paths": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [ "name", "count", "isCircular", "bidirectional", "bridges" ],
+                "properties": {
+                    "name": { "type": "string" },
+                    "count": { "type": "integer" },
+                    "isCircular": { "type": "boolean" },
+                    "bidirectional": { "type": "boolean" },
+                    "bridges": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [ "fromSpot", "toPath", "toSpot" ],
+                            "properties": {
+                                "fromSpot": { "type": "integer" },
+                                "toPath": { "type": "string" },
+                                "toSpot": { "type": "integer" }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+if(!ajv.validate(boardSchema, board))
+    console.log('Invalid board JSON: ' + JSON.stringify(ajv.errors));
+
+class Spot {
+    constructor() {
+        this.next = null;
+        this.back = null;
+        this.bridge = null;
+    }
+}
+
+var startSpot = null;
+{
+    let mapOfPaths = new Map();
+
+    // create paths and fill with spots
+    for(let p = 0; p < board.paths.length; ++p) {
+        let pathSpots = new Array(board.paths[p].count);
+
+        if(pathSpots.length >= 1) {
+            let s = pathSpots.length - 1;
+            pathSpots[s] = new Spot();
+            while(s >= 1) {
+                let spot = new Spot();
+                spot.next = pathSpots[s];
+                --s;
+                pathSpots[s] = spot;
+            }
+            if(board.paths[p].isCircular){
+                pathSpots[pathSpots.length - 1].next = pathSpots[0];
+            }
+
+            // create back links on bidirectional paths
+            if(board.paths[p].bidirectional){
+                for(s = 1; s < pathSpots.length; ++s){
+                    pathSpots[s].back = pathSpots[s - 1];
+                }
+                if(board.paths[p].isCircular){
+                    pathSpots[0].back = pathSpots[pathSpots.length - 1];
+                }
+            }
+        }
+
+        mapOfPaths.set(board.paths[p].name, pathSpots);
+    }
+
+
+    // find bridge data and link paths and bridges
+    for(let p = 0; p < board.paths.length; ++p){
+        let currentPath = board.paths[p];
+        let pathSpots = mapOfPaths.get(currentPath.name);
+        for(let b =0; b < currentPath.bridges.length; ++b){
+            let currentBridge = currentPath.bridges[b];
+            pathSpots[currentBridge.fromSpot].bridge = mapOfPaths.get(currentBridge.toPath)[currentBridge.toSpot];
+        }
+    }
+
+    startSpot = mapOfPaths.get(board.startPath)[board.startSpot];
 }

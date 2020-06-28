@@ -1,8 +1,13 @@
 TODO:
 
+
 gameboard
+    - A Path is a class with a field that is an array of Spaces, each of which is connnected to the next Space.
+    - A Space may have additional connections to any other Spaces on the board, even Spaces in other Paths.
+
 roll the dice 
 game rules (logic)
+
 
 
 
@@ -26,6 +31,8 @@ Wisdom:
 Prophets:
 repeat
 
+// Church History Multi-Bridge
+
 // NT Board
 Gospels:
 Acts:
@@ -33,4 +40,3 @@ Paul:
 Epistles:
 repeat
 
-// Church History Bridge
