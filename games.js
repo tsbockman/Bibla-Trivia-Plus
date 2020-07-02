@@ -339,26 +339,19 @@ var startSpot = null;
         let pathSpots = new Array(currentPath.count);
 
         if(pathSpots.length >= 1) {
-            let s = pathSpots.length - 1;
-            pathSpots[s] = new Spot();
-            while(s >= 1) {
-                let spot = new Spot();
-                spot.next = pathSpots[s];
-                --s;
-                pathSpots[s] = spot;
-            }
-            if(currentPath.isCircular){
-                pathSpots[pathSpots.length - 1].next = pathSpots[0];
-            }
+            for(let s = 0; s < pathSpots.length; ++s)
+                pathSpots[s] = new Spot();
 
-            // create back links on bidirectional paths
-            if(currentPath.bidirectional){
-                for(s = 1; s < pathSpots.length; ++s){
+            // create intrapath links
+            for(let s = 1; s < pathSpots.length; ++s) {
+                pathSpots[s - 1].next = pathSpots[s];
+                if(currentPath.bidirectional)
                     pathSpots[s].back = pathSpots[s - 1];
-                }
-                if(currentPath.isCircular){
+            }
+            if(currentPath.isCircular) {
+                pathSpots[pathSpots.length - 1].next = pathSpots[0];
+                if(currentPath.bidirectional)
                     pathSpots[0].back = pathSpots[pathSpots.length - 1];
-                }
             }
         }
 
