@@ -281,7 +281,7 @@ var boardSchema = {
             "items": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": [ "name", "count", "isCircular", "bidirectional", "bridges" ],
+                "required": [ "name", "count", "isCircular", "bidirectional", "bridges", "pins" ],
                 "properties": {
                     "name": { "type": "string" },
                     "count": { "type": "integer" },
@@ -297,6 +297,19 @@ var boardSchema = {
                                 "fromSpot": { "type": "integer" },
                                 "toPath": { "type": "string" },
                                 "toSpot": { "type": "integer" }
+                            }
+                        }
+                    },
+                    "pins": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [ "spot", "x", "y" ],
+                            "properties": {
+                                "spot": { "type": "integer" },
+                                "x": { "type": "number" },
+                                "y": { "type": "number" }
                             }
                         }
                     }

@@ -30,6 +30,28 @@ let boardJSON = `{
                     "toPath": "Church History West",
                     "toSpot": 0
                 }
+            ],
+            "pins": [
+                {
+                    "spot": 0,
+                    "x": 0.5,
+                    "y": 0.05
+                },
+                {
+                    "spot": 15,
+                    "x": 0.95,
+                    "y": 0.5
+                },
+                {
+                    "spot": 30,
+                    "x": 0.5,
+                    "y": 0.95
+                },
+                {
+                    "spot": 45,
+                    "x": 0.05,
+                    "y": 0.5
+                }
             ]
         },
         {
@@ -58,6 +80,28 @@ let boardJSON = `{
                     "toPath": "Church History West",
                     "toSpot": 1
                 }
+            ],
+            "pins": [
+                {
+                    "spot": 0,
+                    "x": 0.5,
+                    "y": 0.35
+                },
+                {
+                    "spot": 5,
+                    "x": 0.65,
+                    "y": 0.5
+                },
+                {
+                    "spot": 10,
+                    "x": 0.5,
+                    "y": 0.65
+                },
+                {
+                    "spot": 15,
+                    "x": 0.35,
+                    "y": 0.5
+                }
             ]
         },
         {
@@ -75,6 +119,18 @@ let boardJSON = `{
                     "fromSpot": 1,
                     "toPath": "New Testament",
                     "toSpot": 0
+                }
+            ],
+            "pins": [
+                {
+                    "spot": 0,
+                    "x": 0.5,
+                    "y": 0.15
+                },
+                {
+                    "spot": -1,
+                    "x": 0.5,
+                    "y": 0.25
                 }
             ]
         },
@@ -94,6 +150,18 @@ let boardJSON = `{
                     "toPath": "New Testament",
                     "toSpot": 5
                 }
+            ],
+            "pins": [
+                {
+                    "spot": 0,
+                    "x": 0.85,
+                    "y": 0.5
+                },
+                {
+                    "spot": -1,
+                    "x": 0.75,
+                    "y": 0.5
+                }
             ]
         },
         {
@@ -112,6 +180,18 @@ let boardJSON = `{
                     "toPath": "New Testament",
                     "toSpot": 10
                 }
+            ],
+            "pins": [
+                {
+                    "spot": 0,
+                    "x": 0.5,
+                    "y": 0.85
+                },
+                {
+                    "spot": -1,
+                    "x": 0.5,
+                    "y": 0.75
+                }
             ]
         },
         {
@@ -129,6 +209,18 @@ let boardJSON = `{
                     "fromSpot": 1,
                     "toPath": "New Testament",
                     "toSpot": 15
+                }
+            ],
+            "pins": [
+                {
+                    "spot": 0,
+                    "x": 0.15,
+                    "y": 0.5
+                },
+                {
+                    "spot": -1,
+                    "x": 0.25,
+                    "y": 0.5
                 }
             ]
         }
