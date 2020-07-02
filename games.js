@@ -323,6 +323,9 @@ if(!ajv.validate(boardSchema, board))
 
 class Spot {
     constructor() {
+        this.x = NaN;
+        this.y = NaN;
+
         this.next = null;
         this.back = null;
         this.bridge = null;
@@ -337,6 +340,9 @@ var startSpot = null;
     for(let p = 0; p < board.paths.length; ++p) {
         let currentPath = board.paths[p];
         let pathSpots = new Array(currentPath.count);
+        function wrapS(s) {
+            return s - Math.floor(s / pathSpots.length) * pathSpots.length;
+        }
 
         if(pathSpots.length >= 1) {
             for(let s = 0; s < pathSpots.length; ++s)
@@ -352,6 +358,51 @@ var startSpot = null;
                 pathSpots[pathSpots.length - 1].next = pathSpots[0];
                 if(currentPath.bidirectional)
                     pathSpots[0].back = pathSpots[pathSpots.length - 1];
+            }
+
+            // apply pins
+            if(currentPath.pins.length > 0) {
+                for(let i = 0; i < currentPath.pins.length; ++i) {
+                    let pin = currentPath.pins[i];
+                    let spot = pathSpots[pin.spot = wrapS(pin.spot)];
+                    spot.x = pin.x;
+                    spot.y = pin.y;
+                }
+                currentPath.pins.sort(function(a, b) {
+                    return (a.spot < b.spot)? -1 : (a.spot > b.spot)? 1 : 0;
+                });
+
+                let fromPin = null;
+                let fromSpot = null;
+                if(currentPath.isCircular) {
+                    fromPin = currentPath.pins[currentPath.pins.length - 1];
+                    fromSpot = pathSpots[fromPin.spot];
+                }
+
+                for(let i = 0; i < currentPath.pins.length; ++i) {
+                    let toPin = currentPath.pins[i];
+                    let toSpot = pathSpots[toPin.spot];
+                    toSpot.x = toPin.x;
+                    toSpot.y = toPin.y;
+
+                    if(fromPin !== null) {
+                        let segmentLen = wrapS(toPin.spot - fromPin.spot);
+                        if((segmentLen === 0) && currentPath.isCircular)
+                            segmentLen = pathSpots.length;
+
+                        if(segmentLen > 1) {
+                            for(let n = 1; n < segmentLen; ++n) {
+                                let currSpot = pathSpots[wrapS(fromPin.spot + n)];
+                                // Linear interpolation:
+                                currSpot.x = (fromSpot.x * (segmentLen - n) + toSpot.x * n) / segmentLen;
+                                currSpot.y = (fromSpot.y * (segmentLen - n) + toSpot.y * n) / segmentLen;
+                            }
+                        }
+                    }
+
+                    fromPin = toPin;
+                    fromSpot = toSpot;
+                }
             }
         }
 
