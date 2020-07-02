@@ -322,7 +322,8 @@ var startSpot = null;
 
     // create paths and fill with spots
     for(let p = 0; p < board.paths.length; ++p) {
-        let pathSpots = new Array(board.paths[p].count);
+        let currentPath = board.paths[p];
+        let pathSpots = new Array(currentPath.count);
 
         if(pathSpots.length >= 1) {
             let s = pathSpots.length - 1;
@@ -333,22 +334,22 @@ var startSpot = null;
                 --s;
                 pathSpots[s] = spot;
             }
-            if(board.paths[p].isCircular){
+            if(currentPath.isCircular){
                 pathSpots[pathSpots.length - 1].next = pathSpots[0];
             }
 
             // create back links on bidirectional paths
-            if(board.paths[p].bidirectional){
+            if(currentPath.bidirectional){
                 for(s = 1; s < pathSpots.length; ++s){
                     pathSpots[s].back = pathSpots[s - 1];
                 }
-                if(board.paths[p].isCircular){
+                if(currentPath.isCircular){
                     pathSpots[0].back = pathSpots[pathSpots.length - 1];
                 }
             }
         }
 
-        mapOfPaths.set(board.paths[p].name, pathSpots);
+        mapOfPaths.set(currentPath.name, pathSpots);
     }
 
 
